@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A loot data class.
+ */
 public class LootData {
     public final List<Monster> monsters;
     public final Map<String, String[]> treasures;
@@ -16,6 +19,15 @@ public class LootData {
     public final List<Affix> prefixes;
     public final List<Affix> suffixes;
 
+    /**
+     * Constructs a new loot data object from the given data set.
+     *
+     * @param monsters a list of monster objects
+     * @param treasures a map with a string key and a string array value
+     * @param armors a map with a string key and an integer array value
+     * @param prefixes a list of affix objects
+     * @param suffixes a list of affix objects
+     */
     public LootData(List<Monster> monsters,
                     Map<String, String[]> treasures,
                     Map<String, int[]> armors,
@@ -28,6 +40,13 @@ public class LootData {
         this.suffixes = suffixes;
     }
 
+    /**
+     * Reads the loot data from the given data set.
+     *
+     * @param dataDir a string
+     * @return a loot data object
+     * @throws IOException an exception
+     */
     public static LootData read(String dataDir) throws IOException {
         List<Monster> monsters = parseMonsters(Path.of(dataDir, "monstats.txt"));
         Map<String, String[]> treasures = parseTreasures(Path.of(dataDir, "TreasureClassEx.txt"));
@@ -72,8 +91,8 @@ public class LootData {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\t");
-                armors.put(parts[0], new int[] { Integer.parseInt(parts[1]),
-                                                 Integer.parseInt(parts[2]) });
+                armors.put(parts[0], new int[] {Integer.parseInt(parts[1]),
+                                                Integer.parseInt(parts[2])});
             }
         }
 

@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * The main loot generator class.
+ */
 public class LootGenerator {
     /** The path to the dataset (either the small or large set). */
-    private static final String DATA_SET = "data/small";
+    private static final String DATA_SET = "data/large";
 
     private static class GenAffix {
         String name;
@@ -19,6 +22,12 @@ public class LootGenerator {
         }
     }
 
+    /**
+     * Runs the main function.
+     *
+     * @param args an array of strings
+     * @throws IOException an exception
+     */
     public static void main(String[] args) throws IOException {
         LootData data = LootData.read(DATA_SET);
         Random rng = new Random();
